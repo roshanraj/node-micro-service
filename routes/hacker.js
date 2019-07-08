@@ -21,7 +21,7 @@ router.get('/', async function(req, res, next){
     var body = await getdata("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty");
     var temp = [];
     for (var x in body){
-        console.log(body[x]);
+       
         temp[x] = rp("https://hacker-news.firebaseio.com/v0/item/"+body[x]+".json?print=pretty")
                         .then(function(data){
                             // console.log(data);

@@ -6,10 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors')
 
-var mongoose = require('mongoose');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
 var hacker = require('./routes/hacker');
 
 var app = express();
@@ -21,7 +17,7 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,17 +25,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', index); // this to be replaced with spa 
 
 // user hacker new api to serve top 50 news
-app.use('/hacker', hacker);
+app.use('/api/v1/hacker', hacker);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('<---  Not Found  --->');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -47,11 +43,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.use(function(a, b,req, res, next){
-  var obj = {
-    "a":a,
-    "b":b
-  }
-  res.send(obj)
-});
+
 module.exports = app;
