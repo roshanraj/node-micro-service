@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 
 var hacker = require('./routes/hacker');
-
+var research = require('./routes/research');
 var app = express();
 app.use(cors())
 // view engine setup
@@ -26,12 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // user hacker new api to serve top 50 news
 app.use('/api/v1/hacker', hacker);
-
+app.use(research);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
+  // console.log(req);
   var err = new Error('<---  Not Found  --->');
   err.status = 404;
   next(err);
+  
 });
 
 // error handler
