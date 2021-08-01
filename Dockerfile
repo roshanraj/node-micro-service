@@ -1,5 +1,5 @@
 FROM node:10
-MAINTAINER rraj 
+## MAINTAINER rraj 
 USER root
 RUN apt-get update
 RUN mkdir app && cd app
