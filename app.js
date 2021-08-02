@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // user hacker new api to serve top 50 news
 app.use('/api/v1/hacker', hacker);
-// add research module
+
 app.use(research);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
