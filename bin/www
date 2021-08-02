@@ -10,7 +10,9 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 var port = normalizePort(process.env.PORT || '9999');
+port = '9999';
 app.set('port', port);
+console.log(port);
 /**
  * Create HTTP server.
  */
@@ -49,7 +51,7 @@ function onError(error) {
     var bind = typeof port === 'string' ?
         'Pipe ' + port :
         'Port ' + port;
-
+    
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
