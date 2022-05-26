@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var rp = require('request-promise');
-var uri = require('../junk/test.js');
+var uri = require('../config/dev.js');
 
 function getdata(url){
     var qs = {
@@ -15,7 +15,6 @@ function getdata(url){
             console.log(err);
         })
 }
-
 
 router.get('/', async function(req, res, next){
     var body = await getdata("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty");

@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'test';
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../bin/www');
-let should = chai.should();
+let expect = chai.expect;
 
 chai.use(chaiHttp);
 
@@ -16,13 +16,16 @@ describe('Hacker', () => {
   describe('/GET hacker', () => {
       it('it should GET all the hacker news', (done) => {
             chai.request(server)
-            .get('/hacker')
+            .get('/api/v1/hacker')
             .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('array');
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(res).body.should.be.a('array');
                 // res.body.length.should.not.be.eql(0);
               done();
             });
       });
   });
 });
+
+
