@@ -21,13 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/', index); // this to be replaced with spa 
-
 // user hacker new api to serve top 50 news
 app.use('/api/v1/hacker', hacker);
-
-app.use(research);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   // console.log(req);
